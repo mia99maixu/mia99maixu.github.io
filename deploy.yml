@@ -1,0 +1,123 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Trigger the workflow on push to the main branch
+  push:
+    branches: [ main ]
+  
+  # Allow manual triggering from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fix next.config.mjs for GitHub Pages
+        run: |
+          cat > next.config.mjs << 'EOF'
+          /** @type {import('next').NextConfig} */
+          const nextConfig = {
+            output: 'export',
+            images: {
+              unoptimized: true,
+            },
+          };
+          
+          export default nextConfig;
+          EOF
+
+      - name: Build
+        run: npm run build
+
+      - name: Fix asset paths
+        run: |
+          cat > fix-paths.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Directory containing the static export
+          const outDir = path.join(__dirname, 'out');
+          
+          // Function to recursively find all HTML files
+          function findHtmlFiles(dir, fileList = []) {
+            const files = fs.readdirSync(dir);
+            
+            files.forEach(file => {
+              const filePath = path.join(dir, file);
+              const stat = fs.statSync(filePath);
+              
+              if (stat.isDirectory()) {
+                findHtmlFiles(filePath, fileList);
+              } else if (path.extname(file) === '.html') {
+                fileList.push(filePath);
+              }
+            });
+            
+            return fileList;
+          }
+          
+          // Find all HTML files
+          const htmlFiles = findHtmlFiles(outDir);
+          
+          // Process each HTML file
+          htmlFiles.forEach(filePath => {
+            console.log(`Processing ${filePath}`);
+            
+            // Read the file content
+            let content = fs.readFileSync(filePath, 'utf8');
+            
+            // Replace all instances of /mia99maixu.github.io/ with /
+            content = content.replace(/\/mia99maixu\.github\.io\//g, '/');
+            
+            // Write the modified content back to the file
+            fs.writeFileSync(filePath, content);
+          });
+          
+          console.log(`Processed ${htmlFiles.length} HTML files`);
+          EOF
+          
+          node fix-paths.js
+
+      - name: Create .nojekyll file
+        run: touch out/.nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './out'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+
+
