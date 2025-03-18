@@ -1,0 +1,90 @@
+1:"$Sreact.fragment"
+2:I[7780,["177","static/chunks/app/layout-67f2c2da3ce82c7e.js"],"ThemeProvider"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+6:I[9665,[],"OutletBoundary"]
+9:I[9665,[],"ViewportBoundary"]
+b:I[9665,[],"MetadataBoundary"]
+d:I[6614,[],""]
+:HL["/_next/static/media/a34f9d1faa5f3315-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/894ec13610a8c521.css","style"]
+0:{"P":null,"b":"w6s_aZQ_z4UBQwnKSnn5N","p":"","c":["","blog","time-series-forecasting-for-business-applications"],"i":false,"f":[[["",{"children":["blog",{"children":[["slug","time-series-forecasting-for-business-applications","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/894ec13610a8c521.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"__className_d65c78","children":["$","$L2",null,{"attribute":"class","defaultTheme":"system","enableSystem":true,"disableTransitionOnChange":true,"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","time-series-forecasting-for-business-applications","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5","$undefined",null,["$","$L6",null,{"children":["$L7","$L8",null]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","sXXKjjd1DAFL-6YwK5LSW",{"children":[["$","$L9",null,{"children":"$La"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lb",null,{"children":"$Lc"}]]}],false]],"m":"$undefined","G":["$d","$undefined"],"s":false,"S":true}
+e:I[6874,["874","static/chunks/874-b10e0b763931d527.js","953","static/chunks/app/blog/%5Bslug%5D/page-727e90650e892c54.js"],""]
+f:Tbda,
+      <p>Feature engineering is one of the most critical steps in the machine learning pipeline. The quality and relevance of features can significantly impact model performance, often more than the choice of algorithm itself.</p>
+      
+      <h2>What is Feature Engineering?</h2>
+      
+      <p>Feature engineering is the process of transforming raw data into features that better represent the underlying problem to predictive models, resulting in improved model accuracy on unseen data.</p>
+      
+      <h2>Key Feature Engineering Techniques</h2>
+      
+      <h3>1. Handling Missing Values</h3>
+      
+      <p>Missing values can significantly impact model performance. Common approaches include:</p>
+      
+      <ul>
+        <li>Imputation with mean, median, or mode</li>
+        <li>Using algorithms that handle missing values (like XGBoost)</li>
+        <li>Creating "missing" indicators as additional features</li>
+      </ul>
+      
+      <h3>2. Categorical Encoding</h3>
+      
+      <p>Converting categorical variables into numerical representations:</p>
+      
+      <ul>
+        <li>One-hot encoding for nominal variables</li>
+        <li>Label encoding for ordinal variables</li>
+        <li>Target encoding for high-cardinality features</li>
+      </ul>
+      
+      <h3>3. Feature Scaling</h3>
+      
+      <p>Standardizing or normalizing numerical features to ensure they contribute equally to the model:</p>
+      
+      <pre><code>from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)</code></pre>
+      
+      <h3>4. Feature Creation</h3>
+      
+      <p>Generating new features from existing ones to capture additional patterns:</p>
+      
+      <ul>
+        <li>Polynomial features</li>
+        <li>Domain-specific features (e.g., day of week from date)</li>
+        <li>Interaction terms between features</li>
+      </ul>
+      
+      <h2>Automated Feature Engineering</h2>
+      
+      <p>Tools like Featuretools can automate the feature engineering process:</p>
+      
+      <pre><code>import featuretools as ft
+
+# Create an EntitySet
+es = ft.EntitySet(id="customer_data")
+
+# Add entities
+es.add_dataframe(dataframe=customers_df, dataframe_name="customers", index="customer_id")
+es.add_dataframe(dataframe=transactions_df, dataframe_name="transactions", 
+                index="transaction_id", time_index="timestamp")
+
+# Define relationships
+r = ft.Relationship(es["customers"]["customer_id"], es["transactions"]["customer_id"])
+es.add_relationship(r)
+
+# Run Deep Feature Synthesis
+feature_matrix, feature_names = ft.dfs(entityset=es, target_entity="customers", 
+                                      max_depth=2)</code></pre>
+      
+      <h2>Conclusion</h2>
+      
+      <p>Effective feature engineering is often the difference between average and exceptional model performance. By investing time in understanding your data and creating meaningful features, you can significantly improve your machine learning models' predictive power.</p>
+    5:["$","div",null,{"className":"container py-12","children":["$","div",null,{"className":"max-w-3xl mx-auto","children":[["$","$Le",null,{"href":"/blog","children":"← Back to Blog","className":"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 mb-6","ref":null}],["$","article",null,{"children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"Feature Engineering Techniques for Machine Learning Models"}],["$","p",null,{"className":"text-muted-foreground mb-8","children":"March 15, 2023"}],["$","div",null,{"className":"prose prose-gray max-w-none dark:prose-invert","dangerouslySetInnerHTML":{"__html":"$f"}}]]}]]}]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+8:null
+c:[["$","title","0",{"children":"time-series-forecasting-for-business-applications - Mai Xu's Blog"}],["$","meta","1",{"name":"description","content":"Read Mai Xu's insights on time-series-forecasting-for-business-applications"}]]
